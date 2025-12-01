@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { DevicePhoneMobileIcon, ComputerDesktopIcon, PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import type { AppMeta } from "@/data/apps";
 import type { ProductMeta } from "@/data/products";
@@ -87,11 +88,13 @@ export function ContactContent({ apps, products }: ContactContentProps) {
 
   return (
     <div className="space-y-12">
-      <section className="space-y-4">
-        <h1 className="text-3xl font-semibold text-slate-900">Contact</h1>
-        <p className="text-slate-600">
-          お問い合わせは以下のフォームをご利用ください。2 営業日以内を目安にご返信いたします。
-        </p>
+      <section className="band-gradient full-bleed px-6 py-10 text-white">
+        <div className="mx-auto max-w-5xl space-y-4">
+          <h1 className="text-3xl font-semibold">Contact</h1>
+          <p className="text-white/80">
+            お問い合わせは以下のフォームをご利用ください。2 営業日以内を目安にご返信いたします。
+          </p>
+        </div>
       </section>
 
       <section className="card-surface rounded-2xl border border-transparent p-6 shadow-lg">
@@ -165,9 +168,9 @@ export function ContactContent({ apps, products }: ContactContentProps) {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <button
               type="submit"
-              className="inline-flex items-center justify-center rounded-full bg-white/15 px-6 py-2 text-sm font-semibold text-white transition hover:bg-white/30"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white/15 px-6 py-2 text-sm font-semibold text-white transition hover:bg-white/30"
             >
-              送信する
+              <PaperAirplaneIcon className="h-4 w-4" /> 送信する
             </button>
             {status === "success" && (
               <p className="text-sm text-white/80">送信内容を受け付けました（ダミー）</p>
@@ -193,7 +196,9 @@ export function ContactContent({ apps, products }: ContactContentProps) {
                 </div>
                 {app.platforms.includes("ios") && (
                   <div className="space-y-1 rounded-xl border border-white/30 bg-white/10 p-4">
-                    <p className="text-sm font-semibold">iOS 版</p>
+                    <p className="flex items-center gap-2 text-sm font-semibold">
+                      <DevicePhoneMobileIcon className="h-4 w-4" /> iOS 版
+                    </p>
                     <p className="text-sm text-white/85">App Store で販売（詳細は iOS ストア側）</p>
                     <Link
                       href={`/apps/${app.id}`}
@@ -205,7 +210,9 @@ export function ContactContent({ apps, products }: ContactContentProps) {
                 )}
                 {macProduct && (
                   <div className="space-y-1 rounded-xl border border-white/30 bg-white/10 p-4">
-                    <p className="text-sm font-semibold">macOS 版</p>
+                    <p className="flex items-center gap-2 text-sm font-semibold">
+                      <ComputerDesktopIcon className="h-4 w-4" /> macOS 版
+                    </p>
                     <p className="text-sm text-white/85">
                       価格: {priceFormatter.format(macProduct.price)} (税込)
                     </p>

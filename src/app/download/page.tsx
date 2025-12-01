@@ -51,13 +51,15 @@ export default async function DownloadPage({ searchParams }: DownloadPageProps) 
 
     return (
       <div className="space-y-8">
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Download</p>
-          <h1 className="text-3xl font-semibold text-slate-900">{product.name}</h1>
-          <p className="text-slate-600">
-            決済が確認できました。以下のリンクからダウンロードしてください。
-          </p>
-        </div>
+        <section className="band-gradient full-bleed px-6 py-10 text-white">
+          <div className="mx-auto max-w-5xl space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">Download</p>
+            <h1 className="text-3xl font-semibold">{product.name}</h1>
+            <p className="text-white/85">
+              決済が確認できました。以下のリンクからダウンロードしてください。
+            </p>
+          </div>
+        </section>
 
         <div className="card-surface space-y-4 rounded-2xl border border-transparent p-6 shadow-lg">
           <div className="space-y-1 text-sm text-white/85">

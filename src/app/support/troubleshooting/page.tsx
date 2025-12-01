@@ -13,10 +13,14 @@ const steps = [
 export default function TroubleshootingPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-semibold text-slate-900">Troubleshooting</h1>
-      <p className="text-slate-600">
-        代表的な解決ステップと、サポートに連絡いただく際のチェックリストをまとめています。
-      </p>
+      <section className="band-gradient full-bleed px-6 py-10 text-white">
+        <div className="mx-auto max-w-5xl space-y-3">
+          <h1 className="text-3xl font-semibold">Troubleshooting</h1>
+          <p className="text-white/80">
+            代表的な解決ステップと、サポートに連絡いただく際のチェックリストをまとめています。
+          </p>
+        </div>
+      </section>
       <ol className="list-decimal space-y-2 pl-6 text-sm text-slate-600">
         {steps.map((step) => (
           <li key={step}>{step}</li>

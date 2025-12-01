@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DocumentTextIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -26,17 +27,22 @@ const posts = [
 export default function BlogPage() {
   return (
     <div className="space-y-8">
-      <header className="space-y-2">
-        <h1 className="text-3xl font-semibold text-slate-900">Blog</h1>
-        <p className="text-slate-600">開発の裏側や最新情報を記録するためのブログです。</p>
-      </header>
+      <section className="band-gradient full-bleed px-6 py-10 text-white">
+        <div className="mx-auto max-w-5xl space-y-2">
+          <h1 className="text-3xl font-semibold">Blog</h1>
+          <p className="text-white/80">開発の裏側や最新情報を記録するためのブログです。</p>
+        </div>
+      </section>
 
       <div className="space-y-6">
         {posts.map((post) => (
-          <article key={post.title} className="card-surface space-y-2 rounded-2xl border border-transparent p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-              {post.date}
-            </p>
+          <article key={post.title} className="card-surface space-y-3 rounded-2xl border border-transparent p-6">
+            <div className="flex items-center gap-3 text-white/70">
+              <DocumentTextIcon className="h-6 w-6" />
+              <p className="text-xs font-semibold uppercase tracking-[0.2em]">
+                {post.date}
+              </p>
+            </div>
             <h2 className="text-xl font-semibold">{post.title}</h2>
             <p className="text-sm text-white/85">{post.summary}</p>
             <p className="text-sm text-white">記事の全文は後ほど公開します。</p>

@@ -41,12 +41,14 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <div className="space-y-8">
-      <div className="space-y-3">
-        <h1 className="text-3xl font-semibold text-slate-900">Privacy Policy</h1>
-        <p className="text-slate-600">
-          直販サイトで安全に購入いただくため、情報の取り扱い指針をまとめています。正式公開に合わせて最新の条項に更新します。
-        </p>
-      </div>
+      <section className="band-gradient full-bleed px-6 py-10 text-white">
+        <div className="mx-auto max-w-5xl space-y-3">
+          <h1 className="text-3xl font-semibold">Privacy Policy</h1>
+          <p className="text-white/80">
+            直販サイトで安全に購入いただくため、情報の取り扱い指針をまとめています。正式公開に合わせて最新の条項に更新します。
+          </p>
+        </div>
+      </section>
 
       <div className="space-y-6">
         {sections.map((section) => (

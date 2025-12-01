@@ -30,12 +30,14 @@ const clauses = [
 export default function TermsPage() {
   return (
     <div className="space-y-8">
-      <div className="space-y-3">
-        <h1 className="text-3xl font-semibold text-slate-900">Terms of Service</h1>
-        <p className="text-slate-600">
-          teLab のアプリを安心して利用していただくための仮利用規約です。正式リリース時に法務レビューを経て更新します。
-        </p>
-      </div>
+      <section className="band-gradient full-bleed px-6 py-10 text-white">
+        <div className="mx-auto max-w-5xl space-y-3">
+          <h1 className="text-3xl font-semibold">Terms of Service</h1>
+          <p className="text-white/80">
+            teLab のアプリを安心して利用していただくための仮利用規約です。正式リリース時に法務レビューを経て更新します。
+          </p>
+        </div>
+      </section>
 
       <div className="space-y-4">
         {clauses.map((clause) => (

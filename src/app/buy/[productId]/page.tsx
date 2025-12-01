@@ -46,11 +46,13 @@ export default function BuyPage({ params }: BuyPageProps) {
 
   return (
     <div className="space-y-8">
-      <div className="space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Purchase</p>
-        <h1 className="text-3xl font-semibold text-slate-900">{product.name}</h1>
-        <p className="text-slate-600">{product.description}</p>
-      </div>
+      <section className="band-gradient full-bleed px-6 py-10 text-white">
+        <div className="mx-auto max-w-5xl space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">Purchase</p>
+          <h1 className="text-3xl font-semibold">{product.name}</h1>
+          <p className="text-white/85">{product.description}</p>
+        </div>
+      </section>
 
       <div className="card-surface rounded-2xl border border-transparent p-6 shadow-lg">
         <dl className="space-y-4 text-white/85">
