@@ -10,18 +10,22 @@ export function Footer() {
   const footerLinks = [
     { href: "/privacy", label: t.common.privacy },
     { href: "/terms", label: t.common.terms },
+    { href: "/about", label: t.common.about },
   ];
 
   return (
     <footer className="border-t border-border bg-background py-12">
-      <div className="container-wide flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-        <div className="space-y-2">
+      <div className="container-wide flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div className="space-y-1">
           <p className="text-lg font-bold tracking-tighter">teLab</p>
+          <p className="text-sm text-muted-foreground">
+            teLab / テラボ / studi11 / Takao Geshi
+          </p>
           <p className="text-sm text-muted-foreground">
             {t.common.copyright.replace("{year}", year.toString())}
           </p>
         </div>
-        <div className="flex gap-8 text-sm font-medium">
+        <div className="flex gap-6 text-sm font-medium">
           {footerLinks.map((link) => (
             <Link
               key={link.href}
