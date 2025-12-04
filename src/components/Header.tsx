@@ -3,62 +3,94 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/apps", label: "Apps" },
-  { href: "/blog", label: "Blog" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/support", label: "Support" },
-  { href: "/contact", label: "Contact" },
-];
+import { useLanguage } from "@/lib/LanguageContext";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const closeMenu = () => setIsOpen(false);
+  const toggleLanguage = () => setLanguage(language === "ja" ? "en" : "ja");
+
+  const navLinks = [
+    { href: "/", label: t.common.home },
+    { href: "/apps", label: t.common.apps },
+    { href: "/blog", label: t.common.blog },
+    { href: "/case-studies", label: t.common.caseStudies },
+    { href: "/support", label: t.common.support },
+    { href: "/contact", label: t.common.contact },
+  ];
 
   return (
-    <header className="border-b border-slate-200 bg-white/80 text-slate-800 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-        <Link href="/" className="text-xl font-semibold tracking-wide">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+      <div className="container-wide flex items-center justify-between py-6">
+        <Link href="/" className="text-2xl font-bold tracking-tighter">
           teLab
         </Link>
-        <button
-          type="button"
-          onClick={toggleMenu}
-          aria-label="Toggle navigation menu"
-          aria-expanded={isOpen}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-transparent text-slate-700 transition hover:bg-white"
-        >
-          {isOpen ? <XMarkIcon className="h-5 w-5" /> : <Bars3Icon className="h-5 w-5" />}
-        </button>
-      </div>
-      <nav
-        className={`grid overflow-hidden transition-[max-height,opacity] duration-300 ease-out ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <div className="mx-auto w-full max-w-5xl px-4 pb-4">
-          <ul className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-medium">
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          <ul className="flex gap-8 text-sm font-medium">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="flex items-center justify-between py-1 text-slate-700 transition hover:text-slate-900"
-                  onClick={closeMenu}
+                  className="text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {link.label}
-                  <span aria-hidden="true" className="text-xs text-slate-400">
-                    →
-                  </span>
                 </Link>
               </li>
             ))}
           </ul>
+          <button
+            onClick={toggleLanguage}
+            className="text-sm font-bold border border-border px-3 py-1 hover:bg-muted transition-colors"
+          >
+            {language === "ja" ? "EN" : "JP"}
+          </button>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <div className="flex items-center gap-4 md:hidden">
+          <button
+            onClick={toggleLanguage}
+            className="text-sm font-bold border border-border px-3 py-1 hover:bg-muted transition-colors"
+          >
+            {language === "ja" ? "EN" : "JP"}
+          </button>
+          <button
+            type="button"
+            onClick={toggleMenu}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isOpen}
+            className="p-2 -mr-2 text-foreground"
+          >
+            {isOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
+          </button>
         </div>
-      </nav>
+      </div>
+
+      {/* Mobile Nav */}
+      {isOpen && (
+        <div className="absolute left-0 top-full w-full border-b border-border bg-background md:hidden">
+          <div className="container-wide py-8">
+            <ul className="flex flex-col gap-6 text-lg font-medium">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="block text-foreground"
+                    onClick={closeMenu}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
