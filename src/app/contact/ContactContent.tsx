@@ -1,7 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { DevicePhoneMobileIcon, ComputerDesktopIcon, PaperAirplaneIcon } from "@heroicons/react/24/outline";
+import {
+  DevicePhoneMobileIcon,
+  ComputerDesktopIcon,
+  PaperAirplaneIcon,
+} from "@heroicons/react/24/outline";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import type { AppMeta } from "@/data/apps";
 import type { ProductMeta } from "@/data/products";
@@ -39,12 +43,28 @@ type ContactContentProps = {
   products: ProductMeta[];
 };
 
+const supportDetails = [
+  {
+    title: "対応時間",
+    description: "平日 10:00-18:00（JST）を目安に返信しています。状況によって 2 営業日ほどかかる場合があります。",
+  },
+  {
+    title: "お問い合わせ内容",
+    description: "購入前の疑問、導入後のトラブル、アップデートでの不具合などお気軽に相談ください。",
+  },
+  {
+    title: "添付資料",
+    description: "画面キャプチャやログをお持ちの場合は返信メールで共有いただけると助かります。",
+  },
+];
+
 export function ContactContent({ apps, products }: ContactContentProps) {
   const [formValues, setFormValues] = useState<FormValues>(initialFormValues);
   const [errors, setErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
   const [status, setStatus] = useState<"idle" | "success">("idle");
 
-  const handleChange = (field: keyof FormValues) =>
+  const handleChange =
+    (field: keyof FormValues) =>
     (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
       setFormValues((prev) => ({ ...prev, [field]: event.target.value }));
       setErrors((prev) => ({ ...prev, [field]: undefined }));
@@ -79,7 +99,6 @@ export function ContactContent({ apps, products }: ContactContentProps) {
     }
 
     console.log("Contact form (dummy)", formValues);
-    // 未実装: 送信処理は後で追加
     setStatus("success");
     setFormValues(initialFormValues);
   };
@@ -87,20 +106,21 @@ export function ContactContent({ apps, products }: ContactContentProps) {
   const macProductsByAppId = new Map(products.map((product) => [product.appId, product]));
 
   return (
-    <div className="space-y-12">
-      <section className="band-gradient full-bleed px-6 py-10 text-white">
-        <div className="mx-auto max-w-5xl space-y-4">
-          <h1 className="text-3xl font-semibold">Contact</h1>
-          <p className="text-white/80">
-            お問い合わせは以下のフォームをご利用ください。2 営業日以内を目安にご返信いたします。
+    <div className="space-y-24 pb-24">
+      <section className="container-wide pt-20">
+        <div className="max-w-3xl space-y-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground">Contact</p>
+          <h1 className="text-display text-3xl md:text-4xl gradient-text">サポートチームへのお問い合わせ</h1>
+          <p className="text-lg text-muted-foreground">
+            フォームからのご連絡は 2 営業日以内を目安に返信しています。機能要望や技術的なご相談も歓迎です。
           </p>
         </div>
       </section>
 
-      <section className="card-surface rounded-2xl border border-transparent p-6 shadow-lg">
-        <form className="space-y-6" onSubmit={handleSubmit}>
+      <section className="container-wide grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <form className="space-y-6 border border-border bg-white p-6 shadow-sm" onSubmit={handleSubmit}>
           <div className="space-y-2">
-            <label htmlFor="name" className="block text-sm font-semibold text-slate-700">
+            <label htmlFor="name" className="block text-sm font-semibold text-slate-800">
               名前 <span className="text-red-500">*</span>
             </label>
             <input
@@ -109,14 +129,14 @@ export function ContactContent({ apps, products }: ContactContentProps) {
               type="text"
               value={formValues.name}
               onChange={handleChange("name")}
-              className="w-full rounded-lg border border-white/40 bg-white/10 px-4 py-2 text-white focus:border-white focus:outline-none"
+              className="w-full border border-border px-4 py-3 text-base text-slate-900 focus:border-foreground focus:outline-none"
               aria-invalid={errors.name ? "true" : "false"}
             />
-            {errors.name && <p className="text-sm text-red-300">{errors.name}</p>}
+            {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="email" className="block text-sm font-semibold text-slate-700">
+            <label htmlFor="email" className="block text-sm font-semibold text-slate-800">
               メールアドレス <span className="text-red-500">*</span>
             </label>
             <input
@@ -125,14 +145,14 @@ export function ContactContent({ apps, products }: ContactContentProps) {
               type="email"
               value={formValues.email}
               onChange={handleChange("email")}
-              className="w-full rounded-lg border border-white/40 bg-white/10 px-4 py-2 text-white focus:border-white focus:outline-none"
+              className="w-full border border-border px-4 py-3 text-base text-slate-900 focus:border-foreground focus:outline-none"
               aria-invalid={errors.email ? "true" : "false"}
             />
-            {errors.email && <p className="text-sm text-red-300">{errors.email}</p>}
+            {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="type" className="block text-sm font-semibold text-slate-700">
+            <label htmlFor="type" className="block text-sm font-semibold text-slate-800">
               種別
             </label>
             <select
@@ -140,7 +160,7 @@ export function ContactContent({ apps, products }: ContactContentProps) {
               name="type"
               value={formValues.type}
               onChange={handleChange("type")}
-              className="w-full rounded-lg border border-white/40 bg-white/10 px-4 py-2 text-white focus:border-white focus:outline-none"
+              className="w-full border border-border bg-white px-4 py-3 text-base text-slate-900 focus:border-foreground focus:outline-none"
             >
               {reasonOptions.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -151,7 +171,7 @@ export function ContactContent({ apps, products }: ContactContentProps) {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="message" className="block text-sm font-semibold text-slate-700">
+            <label htmlFor="message" className="block text-sm font-semibold text-slate-800">
               本文 <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -159,67 +179,75 @@ export function ContactContent({ apps, products }: ContactContentProps) {
               name="message"
               value={formValues.message}
               onChange={handleChange("message")}
-              className="min-h-[160px] w-full rounded-lg border border-white/40 bg-white/10 px-4 py-2 text-white focus:border-white focus:outline-none"
+              className="min-h-[180px] w-full border border-border px-4 py-3 text-base text-slate-900 focus:border-foreground focus:outline-none"
               aria-invalid={errors.message ? "true" : "false"}
             />
-            {errors.message && <p className="text-sm text-red-300">{errors.message}</p>}
+            {errors.message && <p className="text-sm text-red-500">{errors.message}</p>}
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white/15 px-6 py-2 text-sm font-semibold text-white transition hover:bg-white/30"
+              className="inline-flex items-center justify-center gap-2 bg-black px-6 py-3 text-sm font-semibold text-white transition hover:opacity-80"
             >
               <PaperAirplaneIcon className="h-4 w-4" /> 送信する
             </button>
             {status === "success" && (
-              <p className="text-sm text-white/80">送信内容を受け付けました（ダミー）</p>
+              <p className="text-sm text-slate-600">送信内容を受け付けました（ダミー）</p>
             )}
           </div>
         </form>
+
+        <aside className="space-y-4">
+          {supportDetails.map((detail) => (
+            <div key={detail.title} className="border border-border bg-muted p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                {detail.title}
+              </p>
+              <p className="mt-2 text-sm text-slate-700">{detail.description}</p>
+            </div>
+          ))}
+        </aside>
       </section>
 
-      <section className="space-y-4">
+      <section className="container-wide space-y-6">
         <div>
-          <h2 className="text-2xl font-semibold text-slate-900">販売情報</h2>
-          <p className="text-sm text-slate-500">アプリごとの価格と導線をまとめています。</p>
+          <h2 className="text-4xl font-bold tracking-tighter gradient-text">販売情報</h2>
+          <p className="text-sm text-muted-foreground">プロダクトごとの価格と導線をまとめています。</p>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           {apps.map((app) => {
             const macProduct = macProductsByAppId.get(app.id);
 
             return (
-              <div key={app.id} className="card-surface space-y-4 rounded-2xl border border-transparent p-6 shadow-lg">
+              <div
+                key={app.id}
+                className="flex flex-col justify-between border border-border p-6 shadow-sm transition-colors hover:border-foreground"
+              >
                 <div>
-                  <h3 className="text-xl font-semibold">{app.name}</h3>
-                  <p className="text-sm text-white/85">{app.shortDescription}</p>
+                  <h3 className="text-2xl font-semibold gradient-text">{app.name}</h3>
+                  <p className="text-sm text-muted-foreground">{app.shortDescription}</p>
                 </div>
                 {app.platforms.includes("ios") && (
-                  <div className="space-y-1 rounded-xl border border-white/30 bg-white/10 p-4">
-                    <p className="flex items-center gap-2 text-sm font-semibold">
+                  <div className="mt-4 space-y-1 border border-border bg-muted p-4">
+                    <p className="flex items-center gap-2 text-sm font-semibold text-slate-900">
                       <DevicePhoneMobileIcon className="h-4 w-4" /> iOS 版
                     </p>
-                    <p className="text-sm text-white/85">App Store で販売（詳細は iOS ストア側）</p>
-                    <Link
-                      href={`/apps/${app.id}`}
-                      className="inline-flex text-sm font-semibold text-white"
-                    >
+                    <p className="text-sm text-muted-foreground">App Store で販売（詳細は iOS ストア側）</p>
+                    <Link href={`/apps/${app.id}`} className="inline-flex text-sm font-semibold text-foreground">
                       アプリ詳細を見る
                     </Link>
                   </div>
                 )}
                 {macProduct && (
-                  <div className="space-y-1 rounded-xl border border-white/30 bg-white/10 p-4">
-                    <p className="flex items-center gap-2 text-sm font-semibold">
+                  <div className="mt-4 space-y-1 border border-border bg-muted p-4">
+                    <p className="flex items-center gap-2 text-sm font-semibold text-slate-900">
                       <ComputerDesktopIcon className="h-4 w-4" /> macOS 版
                     </p>
-                    <p className="text-sm text-white/85">
+                    <p className="text-sm text-muted-foreground">
                       価格: {priceFormatter.format(macProduct.price)} (税込)
                     </p>
-                    <Link
-                      href={`/buy/${macProduct.id}`}
-                      className="inline-flex text-sm font-semibold text-white"
-                    >
+                    <Link href={`/buy/${macProduct.id}`} className="inline-flex text-sm font-semibold text-foreground">
                       購入ページへ
                     </Link>
                   </div>

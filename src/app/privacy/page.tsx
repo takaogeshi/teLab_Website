@@ -8,60 +8,68 @@ const sections = [
   {
     title: "収集する情報",
     body: [
-      "購入時に Stripe が取得するメールアドレス、氏名、決済情報の一部",
-      "ライセンス管理に必要なデバイス識別子（導入予定）",
-      "お問い合わせフォームから送信された内容",
+      "決済プラットフォーム（Stripe）が取得するメールアドレス・支払いに必要な最低限の情報",
+      "製品のライセンス管理やアクティベーションに必要なデバイス識別子",
+      "お問い合わせフォームにご入力いただいた内容",
     ],
   },
   {
     title: "利用目的",
     body: [
-      "決済処理およびダウンロードリンクの送付",
-      "製品サポートやバグ調査への応答",
-      "購入履歴の確認や会計上の記録",
+      "購入完了後のダウンロードリンク送付とレシート発行",
+      "不具合の調査やサポート返信、重要なお知らせの配信",
+      "税務・会計処理に必要な記録としての保管",
     ],
   },
   {
-    title: "データの保管と削除",
+    title: "保管と削除",
     body: [
-      "Stripe / Vercel / GitHub など信頼できるサービスで安全に保管",
-      "削除依頼は contact ページから受け付け、法的義務がない限り速やかに対応",
-      "ログデータは 90 日を目安に自動削除予定",
+      "Stripe / Vercel / GitHub などの信頼できるインフラ上で暗号化された状態で管理",
+      "不必要になったデータは 90 日を目安に匿名化または削除",
+      "削除依頼をいただいた場合は法的義務を満たしたうえで速やかに対応",
     ],
   },
   {
     title: "第三者提供",
     body: [
-      "決済処理に必要な範囲で Stripe に連携",
-      "法令に基づく請求があった場合を除き、その他の第三者には提供しません",
+      "決済処理に必要な範囲で Stripe に共有し、その他の第三者には提供しません",
+      "法的な請求があった場合に限り、必要最小限の情報を開示します",
     ],
   },
 ];
 
 export default function PrivacyPage() {
   return (
-    <div className="space-y-8">
-      <section className="band-gradient full-bleed px-6 py-10 text-white">
-        <div className="mx-auto max-w-5xl space-y-3">
-          <h1 className="text-3xl font-semibold">Privacy Policy</h1>
-          <p className="text-white/80">
-            直販サイトで安全に購入いただくため、情報の取り扱い指針をまとめています。正式公開に合わせて最新の条項に更新します。
+    <div className="space-y-16 pb-24">
+      <section className="container-wide pt-24">
+        <div className="max-w-3xl space-y-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground">Privacy Policy</p>
+          <h1 className="text-display text-5xl md:text-6xl gradient-text">個人情報の取り扱いについて</h1>
+          <p className="text-lg text-muted-foreground">
+            直販サイトで安心して購入いただけるよう、データの扱い方針と保護体制をまとめています。正式リリース時には最新の法令に合わせて更新します。
           </p>
         </div>
       </section>
 
-      <div className="space-y-6">
+      <section className="container-wide grid gap-6 md:grid-cols-2">
         {sections.map((section) => (
-          <section key={section.title} className="card-surface space-y-2 rounded-2xl border border-transparent p-6">
-            <h2 className="text-xl font-semibold">{section.title}</h2>
-            <ul className="list-disc space-y-1 pl-6 text-sm text-white/85">
+          <article key={section.title} className="border border-border bg-white p-6 shadow-sm">
+            <h2 className="text-2xl font-bold tracking-tight gradient-text">{section.title}</h2>
+            <ul className="mt-4 list-disc space-y-2 pl-5 text-muted-foreground">
               {section.body.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-          </section>
+          </article>
         ))}
-      </div>
+      </section>
+
+      <section className="container-wide border-t border-border pt-12">
+        <h3 className="text-xl font-semibold gradient-text">お問い合わせ</h3>
+        <p className="mt-2 max-w-3xl text-muted-foreground">
+          プライバシーに関するご質問や削除依頼は、Contact ページのフォームからご連絡ください。48 時間以内を目安にサポートチームより返答いたします。
+        </p>
+      </section>
     </div>
   );
 }

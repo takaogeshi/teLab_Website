@@ -17,7 +17,6 @@ export function Header() {
     { href: "/", label: t.common.home },
     { href: "/apps", label: t.common.apps },
     { href: "/blog", label: t.common.blog },
-    { href: "/case-studies", label: t.common.caseStudies },
     { href: "/support", label: t.common.support },
     { href: "/contact", label: t.common.contact },
   ];

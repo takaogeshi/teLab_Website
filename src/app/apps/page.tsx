@@ -17,7 +17,7 @@ export default function AppsPage() {
     <div className="space-y-20 pb-20">
       <section className="container-wide pt-20">
         <div className="max-w-4xl space-y-6">
-          <h1 className="text-display text-6xl md:text-8xl">{t.apps.title}</h1>
+          <h1 className="text-display text-6xl md:text-8xl gradient-text">{t.apps.title}</h1>
           <p className="text-xl text-muted-foreground md:text-2xl">
             {t.apps.subtitle}
           </p>
@@ -31,7 +31,7 @@ export default function AppsPage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <CubeTransparentIcon className="h-8 w-8 text-foreground" />
-                  <h2 className="text-4xl font-bold tracking-tighter group-hover:underline decoration-2 underline-offset-4">
+                  <h2 className="text-4xl font-bold tracking-tighter gradient-text group-hover:underline decoration-2 underline-offset-4">
                     {app.name}
                   </h2>
                 </div>

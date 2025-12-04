@@ -6,7 +6,6 @@ export const dictionary = {
             home: "Home",
             apps: "Apps",
             blog: "Blog",
-            caseStudies: "Case Studies",
             support: "Support",
             contact: "Contact",
             privacy: "Privacy",
@@ -30,10 +29,10 @@ export const dictionary = {
             },
             latestInfo: {
                 title: "Latest Info",
-                subtitle: "ブログやケーススタディで進捗や導入事例をお届けします。",
+                subtitle: "ブログとサポート情報を通じて最新のアップデートをお知らせします。",
                 blogDesc: "開発ロードマップやリリースノートを随時更新しています。",
-                caseStudiesDesc: "導入チームの声や、活用しているワークフローを紹介します。",
                 supportDesc: "FAQ・トラブルシューティング・アップデート情報のハブです。",
+                contactDesc: "お問い合わせ窓口からサポートチームへ直接連絡できます。",
             },
         },
         apps: {
@@ -55,7 +54,6 @@ export const dictionary = {
             home: "Home",
             apps: "Apps",
             blog: "Blog",
-            caseStudies: "Case Studies",
             support: "Support",
             contact: "Contact",
             privacy: "Privacy",
@@ -79,10 +77,10 @@ export const dictionary = {
             },
             latestInfo: {
                 title: "Latest Info",
-                subtitle: "Updates, case studies, and support.",
+                subtitle: "Product updates and support resources.",
                 blogDesc: "Development roadmap and release notes.",
-                caseStudiesDesc: "Voices from teams and workflow examples.",
                 supportDesc: "FAQ, troubleshooting, and updates hub.",
+                contactDesc: "Reach our team directly for questions or feedback.",
             },
         },
         apps: {

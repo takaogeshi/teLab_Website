@@ -1,7 +1,7 @@
 export type AppPlatform = 'ios' | 'macos';
 
 export type AppMeta = {
-  id: 'puzzle' | 'clipslot';
+  id: 'puzzle' | 'clipslot' | 'ghost-desktop' | 'global-mute';
   name: string;
   shortDescription: string;
   tagline: string;
@@ -34,5 +34,23 @@ export const apps: AppMeta[] = [
     platforms: ['ios', 'macos'],
     iosAppStoreUrl: 'https://example.com/clipslot-ios',
     macBuyProductId: 'clipslot-mac',
+  },
+  {
+    id: 'ghost-desktop',
+    name: 'GhostDesktop',
+    shortDescription: 'ワンクリックでデスクトップ上のファイルやディスクを一時的に隠せるツール。',
+    tagline: '画面共有前に、デスクトップを瞬時にクリアに。',
+    shortDescription_en: 'Hide desktop files and disks instantly from the menu bar.',
+    tagline_en: 'Clear your desktop in seconds before sharing your screen.',
+    platforms: ['macos'],
+  },
+  {
+    id: 'global-mute',
+    name: 'GlobalMute',
+    shortDescription: 'ズームやTeamsなどのマイク・カメラをOSレベルでまとめてON/OFFできるユーティリティ。',
+    tagline: 'どんな会議ツールでも、ミュート切り替えを迷わない。',
+    shortDescription_en: 'Toggle mic/camera system-wide, regardless of meeting app.',
+    tagline_en: 'Never hunt for the mute button again.',
+    platforms: ['macos'],
   },
 ];

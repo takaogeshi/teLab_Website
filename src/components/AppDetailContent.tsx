@@ -95,7 +95,7 @@ export function AppDetailContent({ app }: { app: AppMeta }) {
                     <p className="text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground">
                         {t.appDetail.label}
                     </p>
-                    <h1 className="text-display text-6xl md:text-8xl">{app.name}</h1>
+                    <h1 className="text-display text-6xl md:text-8xl gradient-text">{app.name}</h1>
                     <p className="text-2xl font-medium text-foreground">
                         {language === "en" ? app.tagline_en : app.tagline}
                     </p>
@@ -126,7 +126,7 @@ export function AppDetailContent({ app }: { app: AppMeta }) {
                 {/* Workflows */}
                 <section className="space-y-12">
                     <div className="border-b border-border pb-6">
-                        <h2 className="text-4xl font-bold tracking-tighter">{t.appDetail.workflows}</h2>
+                        <h2 className="text-4xl font-bold tracking-tighter gradient-text">{t.appDetail.workflows}</h2>
                         <p className="text-muted-foreground mt-2">{t.appDetail.workflowsDesc}</p>
                     </div>
                     <div className="grid gap-8 md:grid-cols-3">
@@ -142,7 +142,7 @@ export function AppDetailContent({ app }: { app: AppMeta }) {
                 {/* Screenshots */}
                 <section className="space-y-12">
                     <div className="border-b border-border pb-6">
-                        <h2 className="text-4xl font-bold tracking-tighter">{t.appDetail.screenshots}</h2>
+                        <h2 className="text-4xl font-bold tracking-tighter gradient-text">{t.appDetail.screenshots}</h2>
                         <p className="text-muted-foreground mt-2">{t.appDetail.screenshotsDesc}</p>
                     </div>
                     <div className="grid gap-8 md:grid-cols-2">
@@ -152,7 +152,7 @@ export function AppDetailContent({ app }: { app: AppMeta }) {
                                     <PhotoIcon className="h-12 w-12 text-muted-foreground/50" />
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <p className="font-bold">{label}</p>
+                                    <p className="font-bold gradient-text">{label}</p>
                                 </div>
                             </div>
                         ))}
@@ -162,7 +162,7 @@ export function AppDetailContent({ app }: { app: AppMeta }) {
                 {/* FAQ */}
                 <section className="space-y-12">
                     <div className="border-b border-border pb-6">
-                        <h2 className="text-4xl font-bold tracking-tighter">{t.appDetail.faq}</h2>
+                        <h2 className="text-4xl font-bold tracking-tighter gradient-text">{t.appDetail.faq}</h2>
                         <p className="text-muted-foreground mt-2">{t.appDetail.faqDesc}</p>
                     </div>
                     <div className="grid gap-6 md:grid-cols-2">
@@ -170,7 +170,7 @@ export function AppDetailContent({ app }: { app: AppMeta }) {
                             <div key={faq.question} className="card space-y-4">
                                 <div className="flex items-start gap-3">
                                     <QuestionMarkCircleIcon className="h-6 w-6 text-foreground shrink-0" />
-                                    <p className="font-bold">{faq.question}</p>
+                  <p className="font-bold gradient-text">{faq.question}</p>
                                 </div>
                                 <p className="text-muted-foreground pl-9">{faq.answer}</p>
                             </div>

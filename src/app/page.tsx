@@ -5,8 +5,8 @@ import {
   ArrowRightIcon,
   SparklesIcon,
   NewspaperIcon,
-  BuildingOffice2Icon,
   LifebuoyIcon,
+  EnvelopeIcon,
 } from "@heroicons/react/24/outline";
 import { apps } from "@/data/apps";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -24,16 +24,16 @@ export default function Home() {
       icon: NewspaperIcon,
     },
     {
-      title: t.common.caseStudies,
-      description: t.home.latestInfo.caseStudiesDesc,
-      href: "/case-studies",
-      icon: BuildingOffice2Icon,
-    },
-    {
       title: t.common.support,
       description: t.home.latestInfo.supportDesc,
       href: "/support",
       icon: LifebuoyIcon,
+    },
+    {
+      title: t.common.contact,
+      description: t.home.latestInfo.contactDesc,
+      href: "/contact",
+      icon: EnvelopeIcon,
     },
   ];
 
@@ -45,7 +45,7 @@ export default function Home() {
           <p className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-muted-foreground">
             <SparklesIcon className="h-4 w-4" /> {t.home.hero.tagline}
           </p>
-          <h1 className="text-display text-6xl md:text-8xl lg:text-9xl whitespace-pre-line">
+          <h1 className="text-display text-4xl md:text-6xl lg:text-7xl whitespace-pre-line gradient-text">
             {t.home.hero.title}
           </h1>
           <p className="max-w-2xl text-xl text-muted-foreground md:text-2xl text-balance">
@@ -54,7 +54,7 @@ export default function Home() {
           <div className="pt-4">
             <Link
               href="/apps"
-              className="btn-primary text-lg px-8 py-4"
+              className="btn-gradient text-lg px-8 py-4"
             >
               {t.home.hero.cta}
               <ArrowRightIcon className="ml-2 h-5 w-5" />
@@ -66,7 +66,7 @@ export default function Home() {
       {/* Featured Apps Section */}
       <section className="container-wide">
         <div className="mb-16 border-b border-border pb-6">
-          <h2 className="text-4xl font-bold tracking-tighter md:text-5xl">{t.home.recommends.title}</h2>
+          <h2 className="text-4xl font-bold tracking-tighter md:text-5xl gradient-text">{t.home.recommends.title}</h2>
         </div>
         <div className="grid gap-8 md:grid-cols-2">
           {featuredApps.map((app) => (
@@ -78,7 +78,7 @@ export default function Home() {
                 <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
                   {app.platforms.join(" / ")}
                 </p>
-                <h3 className="text-5xl font-bold tracking-tighter md:text-6xl group-hover:underline decoration-2 underline-offset-4">
+                <h3 className="text-5xl font-bold tracking-tighter md:text-6xl gradient-text group-hover:underline decoration-2 underline-offset-4">
                   {app.name}
                 </h3>
                 <p className="text-xl font-medium text-foreground">
@@ -104,7 +104,7 @@ export default function Home() {
       {/* Info Section */}
       <section className="container-wide">
         <div className="mb-16 border-b border-border pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <h2 className="text-4xl font-bold tracking-tighter md:text-5xl">{t.home.latestInfo.title}</h2>
+          <h2 className="text-4xl font-bold tracking-tighter md:text-5xl gradient-text">{t.home.latestInfo.title}</h2>
           <p className="text-muted-foreground">{t.home.latestInfo.subtitle}</p>
         </div>
         <div className="grid gap-px bg-border md:grid-cols-3 border border-border">
@@ -119,7 +119,7 @@ export default function Home() {
                 <div className="mb-6">
                   <Icon className="h-8 w-8 text-foreground" />
                 </div>
-                <h3 className="mb-2 text-xl font-bold tracking-tight">{section.title}</h3>
+                <h3 className="mb-2 text-xl font-bold tracking-tight gradient-text">{section.title}</h3>
                 <p className="text-muted-foreground">{section.description}</p>
                 <div className="mt-6 flex items-center text-sm font-bold opacity-0 transition-opacity group-hover:opacity-100">
                   {t.common.readMore} <ArrowRightIcon className="ml-2 h-4 w-4" />
