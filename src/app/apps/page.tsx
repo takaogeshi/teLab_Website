@@ -15,7 +15,7 @@ export default function AppsPage() {
 
   return (
     <div className="space-y-20 pb-20">
-      <section className="container-wide pt-20">
+      <section className="scroll-animate container-wide pt-20">
         <div className="max-w-4xl space-y-6">
           <h1 className="text-display text-6xl md:text-8xl gradient-text">{t.apps.title}</h1>
           <p className="text-xl text-muted-foreground md:text-2xl">
@@ -24,7 +24,7 @@ export default function AppsPage() {
         </div>
       </section>
 
-      <section className="container-wide">
+      <section className="scroll-animate container-wide">
         <div className="grid gap-8 md:grid-cols-2">
           {apps.map((app) => (
             <div key={app.id} className="group relative flex flex-col justify-between border border-border p-8 transition-colors hover:border-foreground min-h-[300px]">

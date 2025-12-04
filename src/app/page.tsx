@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <div className="space-y-32 pb-32">
       {/* Hero Section */}
-      <section className="container-wide pt-20 md:pt-32">
+      <section className="scroll-animate container-wide pt-20 md:pt-32">
         <div className="max-w-4xl space-y-8">
           <p className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-muted-foreground">
             <SparklesIcon className="h-4 w-4" /> {t.home.hero.tagline}
@@ -64,7 +64,7 @@ export default function Home() {
       </section>
 
       {/* Featured Apps Section */}
-      <section className="container-wide">
+      <section className="scroll-animate container-wide">
         <div className="mb-16 border-b border-border pb-6">
           <h2 className="text-4xl font-bold tracking-tighter md:text-5xl gradient-text">{t.home.recommends.title}</h2>
         </div>
@@ -102,7 +102,7 @@ export default function Home() {
       </section>
 
       {/* Info Section */}
-      <section className="container-wide">
+      <section className="scroll-animate container-wide">
         <div className="mb-16 border-b border-border pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <h2 className="text-4xl font-bold tracking-tighter md:text-5xl gradient-text">{t.home.latestInfo.title}</h2>
           <p className="text-muted-foreground">{t.home.latestInfo.subtitle}</p>

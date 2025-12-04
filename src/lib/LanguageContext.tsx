@@ -13,15 +13,19 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
     const [language, setLanguage] = useState<Language>("ja");
+    const [isClient, setIsClient] = useState(false);
 
     const handleSetLanguage = (lang: Language) => {
         setLanguage(lang);
-        localStorage.setItem("telab-lang", lang);
-        document.documentElement.lang = lang;
+        if (typeof window !== "undefined") {
+            localStorage.setItem("telab-lang", lang);
+            document.documentElement.lang = lang;
+        }
     };
 
-    // Also update on initial load if saved language exists
+    // クライアントサイドでのみ実行
     useEffect(() => {
+        setIsClient(true);
         const saved = localStorage.getItem("telab-lang") as Language;
         if (saved && (saved === "ja" || saved === "en")) {
             setLanguage(saved);

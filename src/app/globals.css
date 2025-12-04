@@ -91,6 +91,50 @@ body {
   box-shadow: 0 20px 40px rgba(91, 33, 182, 0.35);
 }
 
+/* シンプルなフェードインアニメーション */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-animate {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+  /* 初期状態 */
+}
+
+/* 各セクションに遅延を追加 */
+.scroll-animate:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+
+.scroll-animate:nth-of-type(2) {
+  animation-delay: 0.3s;
+}
+
+.scroll-animate:nth-of-type(3) {
+  animation-delay: 0.5s;
+}
+
+.scroll-animate:nth-of-type(4) {
+  animation-delay: 0.7s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .btn-outline {
   display: inline-flex;
   align-items: center;
