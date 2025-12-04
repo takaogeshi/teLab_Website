@@ -34,22 +34,22 @@ const infoSections = [
 export default function Home() {
   return (
     <div className="space-y-12">
-      <section className="hero-gradient full-bleed px-6 py-12 md:px-10 flex items-center">
+      <section className="hero-gradient flex items-center rounded-3xl border border-slate-200 px-6 py-12 shadow-sm md:px-10">
         <div className="mx-auto max-w-5xl space-y-6">
-          <p className="flex items-center gap-2 text-sm uppercase tracking-[0.2em] text-white/80">
-            <SparklesIcon className="h-5 w-5 text-white" /> DIGITAL TOOL STUDIO
+          <p className="flex items-center gap-2 text-sm uppercase tracking-[0.2em] text-slate-500">
+            <SparklesIcon className="h-5 w-5 text-slate-500" /> DIGITAL TOOL STUDIO
           </p>
-          <h1 className="text-4xl font-semibold leading-tight text-white md:text-5xl">
+          <h1 className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
             シンプルなツールで、集中できるワークフローを。
           </h1>
-          <p className="max-w-3xl text-lg text-white/85">
+          <p className="max-w-3xl text-lg text-slate-600">
             teLab は、Mac と iOS にフォーカスしたソフトウェアスタジオです。
             毎日の作業に寄り添い、邪魔をしないユーティリティを丁寧に育てています。
           </p>
           <div>
             <Link
               href="/apps"
-              className="inline-flex items-center gap-2 rounded-full bg-white/20 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-white/30"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-800 transition hover:bg-white"
             >
               アプリ一覧を見る
               <ArrowRightIcon className="h-4 w-4" />
@@ -58,8 +58,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold text-slate-900">代表的なアプリ</h2>
+      <section className="space-y-6 rounded-3xl bg-white p-6 text-slate-900 shadow-sm ring-1 ring-slate-200 md:p-8">
+        <h2 className="text-2xl font-semibold">Recommends</h2>
         <div className="grid gap-6 md:grid-cols-2">
           {featuredApps.map((app) => (
             <div
@@ -67,16 +67,16 @@ export default function Home() {
               className="card-surface flex h-full flex-col rounded-2xl border border-transparent p-6 shadow-lg"
             >
               <div className="flex-1 space-y-2">
-                <p className="text-xs font-medium uppercase tracking-widest text-white/80">
+                <p className="text-xs font-medium uppercase tracking-widest text-slate-500">
                   {app.platforms.join(" / ").toUpperCase()}
                 </p>
-                <h3 className="text-xl font-semibold">{app.name}</h3>
-                <p className="text-sm text-white/80">{app.tagline}</p>
-                <p className="text-white/80">{app.shortDescription}</p>
+                <h3 className="text-xl font-semibold text-slate-900">{app.name}</h3>
+                <p className="text-sm text-slate-500">{app.tagline}</p>
+                <p className="text-slate-600">{app.shortDescription}</p>
               </div>
               <Link
                 href={`/apps/${app.id}`}
-                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-800"
               >
                 詳しく見る
                 <ArrowRightIcon className="h-4 w-4" />
@@ -86,9 +86,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="space-y-6">
+      <section className="space-y-6 rounded-3xl bg-white p-6 text-slate-900 shadow-sm ring-1 ring-slate-200 md:p-8">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <h2 className="text-2xl font-semibold text-slate-900">最新情報</h2>
+          <h2 className="text-2xl font-semibold">最新情報</h2>
           <p className="text-sm text-slate-500">ブログやケーススタディで進捗や導入事例をお届けします。</p>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
@@ -98,16 +98,16 @@ export default function Home() {
               <Link
                 key={section.title}
                 href={section.href}
-                className="card-surface rounded-2xl border border-transparent p-5 shadow-lg transition hover:-translate-y-1"
+                className="card-surface rounded-2xl border border-transparent p-5 shadow-sm transition hover:-translate-y-1"
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="h-6 w-6 text-white" />
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+                  <Icon className="h-6 w-6 text-slate-500" />
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
                     {section.title}
                   </p>
                 </div>
-                <p className="mt-3 text-sm text-white/85">{section.description}</p>
-                <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white">
+                <p className="mt-3 text-sm text-slate-600">{section.description}</p>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-800">
                   詳しく見る
                   <ArrowRightIcon className="h-4 w-4" />
                 </span>
