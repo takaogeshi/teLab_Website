@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRightIcon,
   SparklesIcon,
@@ -38,7 +39,17 @@ export default function Home() {
   ];
 
   return (
-    <div className="space-y-32 pb-32">
+    <div className="space-y-32 pb-32 relative overflow-hidden">
+      {/* Background Logo */}
+      <div className="fixed -top-[20%] -left-[10%] w-[120vw] h-[120vh] -z-10 opacity-[0.08] pointer-events-none select-none rotate-12 blur-sm">
+        <Image
+          src="/teLab_logo.svg"
+          alt=""
+          fill
+          className="object-contain"
+          priority
+        />
+      </div>
       {/* Hero Section */}
       <section className="scroll-animate container-wide pt-20 md:pt-32">
         <div className="max-w-4xl space-y-8">
@@ -74,20 +85,33 @@ export default function Home() {
               key={app.id}
               className="group relative flex flex-col justify-between border border-border p-8 transition-colors hover:border-foreground min-h-[400px]"
             >
-              <div className="space-y-6">
-                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                  {app.platforms.join(" / ")}
-                </p>
-                <h3 className="text-5xl font-bold tracking-tighter md:text-6xl gradient-text group-hover:underline decoration-2 underline-offset-4">
-                  {app.name}
-                </h3>
-                <p className="text-xl font-medium text-foreground">
+              <div className="space-y-6 relative">
+                <div className="flex justify-between items-start">
+                  <div className="space-y-4">
+                    <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                      {app.platforms.join(" / ")}
+                    </p>
+                    <h3 className="text-5xl font-bold tracking-tighter md:text-6xl gradient-text group-hover:underline decoration-2 underline-offset-4">
+                      {app.name}
+                    </h3>
+                  </div>
+                  {app.versions ? (
+                    <Image
+                      src={app.versions.find((v) => v.name === "Pro")?.iconUrl || app.versions[0].iconUrl}
+                      alt={`${app.name} icon`}
+                      width={64}
+                      height={64}
+                      className="h-16 w-16 shadow-sm"
+                    />
+                  ) : null}
+                </div>
+                <p className="text-xl text-muted-foreground md:text-2xl">
                   {language === "en" ? app.tagline_en : app.tagline}
                 </p>
-                <p className="text-muted-foreground">
-                  {language === "en" ? app.shortDescription_en : app.shortDescription}
-                </p>
               </div>
+              <p className="text-muted-foreground">
+                {language === "en" ? app.shortDescription_en : app.shortDescription}
+              </p>
               <Link
                 href={`/apps/${app.id}`}
                 className="mt-8 inline-flex items-center text-lg font-bold"

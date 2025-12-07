@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { CubeTransparentIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { apps } from "@/data/apps";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const platformLabels: Record<string, string> = {
-  ios: "iOS",
   macos: "macOS",
 };
 
@@ -29,11 +29,21 @@ export default function AppsPage() {
           {apps.map((app) => (
             <div key={app.id} className="group relative flex flex-col justify-between border border-border p-8 transition-colors hover:border-foreground min-h-[300px]">
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CubeTransparentIcon className="h-8 w-8 text-foreground" />
+                <div className="flex justify-between items-start">
                   <h2 className="text-4xl font-bold tracking-tighter gradient-text group-hover:underline decoration-2 underline-offset-4">
                     {app.name}
                   </h2>
+                  {app.versions ? (
+                    <Image
+                      src={app.versions.find((v) => v.name === "Pro")?.iconUrl || app.versions[0].iconUrl}
+                      alt={`${app.name} icon`}
+                      width={64}
+                      height={64}
+                      className="h-16 w-16 shadow-sm"
+                    />
+                  ) : (
+                    <CubeTransparentIcon className="h-16 w-16 text-muted-foreground" />
+                  )}
                 </div>
                 <p className="text-lg text-muted-foreground">
                   {language === "en" ? app.shortDescription_en : app.shortDescription}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { CheckCircleIcon, CommandLineIcon, QuestionMarkCircleIcon, PhotoIcon } from "@heroicons/react/24/outline";
 import { type AppMeta } from "@/data/apps";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -92,17 +93,48 @@ export function AppDetailContent({ app }: { app: AppMeta }) {
             {/* Hero */}
             <section className="container-wide pt-20">
                 <div className="max-w-4xl space-y-8">
-                    <p className="text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground">
-                        {t.appDetail.label}
-                    </p>
-                    <h1 className="text-display text-6xl md:text-8xl gradient-text">{app.name}</h1>
+                    <div className="space-y-4">
+                        <p className="text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground">
+                            {t.appDetail.label}
+                        </p>
+                        <h1 className="text-display text-6xl md:text-8xl gradient-text">{app.name}</h1>
+                    </div>
                     <p className="text-2xl font-medium text-foreground">
                         {language === "en" ? app.tagline_en : app.tagline}
                     </p>
                     <p className="text-xl text-muted-foreground">
                         {language === "en" ? app.shortDescription_en : app.shortDescription}
                     </p>
-                    <div className="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+
+                    {/* Version Info */}
+                    {app.versions && (
+                        <div className="grid gap-4 sm:grid-cols-2 max-w-2xl">
+                            {app.versions.map((version) => (
+                                <div key={version.name} className="flex items-center justify-between p-4 border border-border bg-muted/30">
+                                    <div className="flex items-center gap-3">
+                                        <Image
+                                            src={version.iconUrl}
+                                            alt=""
+                                            width={40}
+                                            height={40}
+                                            className="h-10 w-10"
+                                        />
+                                        <div>
+                                            <p className="font-bold">{version.name}</p>
+                                            <p className="text-sm text-muted-foreground">{version.price}</p>
+                                        </div>
+                                    </div>
+                                    {version.storeUrl && (
+                                        <a href={version.storeUrl} className="text-sm font-bold text-primary hover:underline">
+                                            Get
+                                        </a>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    <div className="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground pt-4">
                         {app.platforms.map((platform) => (
                             <span key={platform} className="border border-border px-3 py-1">
                                 {platformLabels[platform] ?? platform}
@@ -170,7 +202,7 @@ export function AppDetailContent({ app }: { app: AppMeta }) {
                             <div key={faq.question} className="card space-y-4">
                                 <div className="flex items-start gap-3">
                                     <QuestionMarkCircleIcon className="h-6 w-6 text-foreground shrink-0" />
-                  <p className="font-bold gradient-text">{faq.question}</p>
+                                    <p className="font-bold gradient-text">{faq.question}</p>
                                 </div>
                                 <p className="text-muted-foreground pl-9">{faq.answer}</p>
                             </div>
@@ -180,16 +212,6 @@ export function AppDetailContent({ app }: { app: AppMeta }) {
 
                 {/* Actions */}
                 <div className="flex flex-wrap gap-4 pt-12 border-t border-border">
-                    {app.iosAppStoreUrl && (
-                        <a
-                            href={app.iosAppStoreUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="btn-outline"
-                        >
-                            {t.common.appStore}
-                        </a>
-                    )}
                     {app.macBuyProductId && (
                         <Link
                             href={`/buy/${app.macBuyProductId}`}

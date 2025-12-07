@@ -1,4 +1,11 @@
-export type AppPlatform = 'ios' | 'macos';
+export type AppPlatform = 'macos';
+
+export type AppVersion = {
+  name: string;
+  price: string;
+  iconUrl: string;
+  storeUrl?: string;
+};
 
 export type AppMeta = {
   id: 'puzzle' | 'clipslot' | 'ghost-desktop' | 'global-mute';
@@ -8,7 +15,7 @@ export type AppMeta = {
   shortDescription_en: string;
   tagline_en: string;
   platforms: AppPlatform[];
-  iosAppStoreUrl?: string;
+  versions?: AppVersion[];
   macBuyProductId?: string;
 };
 
@@ -20,8 +27,19 @@ export const apps: AppMeta[] = [
     tagline: '開いているウィンドウを、一瞬で「ちょうどいい配置」に。',
     shortDescription_en: 'Quickly arrange windows like a puzzle.',
     tagline_en: 'Instantly snap open windows to the "perfect layout".',
-    platforms: ['ios', 'macos'],
-    iosAppStoreUrl: 'https://example.com/puzzle-ios',
+    platforms: ['macos'],
+    versions: [
+      {
+        name: 'Lite',
+        price: 'Free',
+        iconUrl: '/apps/puzzle/puzzle_icon_lite.png',
+      },
+      {
+        name: 'Pro',
+        price: '¥500',
+        iconUrl: '/apps/puzzle/puzzle_icon_pro.png',
+      },
+    ],
     macBuyProductId: 'puzzle-mac',
   },
   {
@@ -31,8 +49,7 @@ export const apps: AppMeta[] = [
     tagline: 'よく使うコピーを、即座に呼び出す。',
     shortDescription_en: 'Fixed-slot clipboard manager.',
     tagline_en: 'Instantly recall frequently used clips.',
-    platforms: ['ios', 'macos'],
-    iosAppStoreUrl: 'https://example.com/clipslot-ios',
+    platforms: ['macos'],
     macBuyProductId: 'clipslot-mac',
   },
   {

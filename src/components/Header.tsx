@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -24,8 +25,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="container-wide flex items-center justify-between py-6">
-        <Link href="/" className="text-2xl font-bold tracking-tighter">
-          teLab
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/teLab_logo.svg"
+            alt="teLab"
+            width={60}
+            height={80}
+            priority
+            className="h-20 w-auto"
+          />
         </Link>
 
         {/* Desktop Nav */}
