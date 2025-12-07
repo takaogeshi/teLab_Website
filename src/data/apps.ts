@@ -50,6 +50,13 @@ export const apps: AppMeta[] = [
     shortDescription_en: 'Fixed-slot clipboard manager.',
     tagline_en: 'Instantly recall frequently used clips.',
     platforms: ['macos'],
+    versions: [
+      {
+        name: 'Standard',
+        price: '¥500',
+        iconUrl: '/apps/clipslot/icon.png',
+      },
+    ],
     macBuyProductId: 'clipslot-mac',
   },
   {
@@ -60,6 +67,13 @@ export const apps: AppMeta[] = [
     shortDescription_en: 'Hide desktop files and disks instantly from the menu bar.',
     tagline_en: 'Clear your desktop in seconds before sharing your screen.',
     platforms: ['macos'],
+    versions: [
+      {
+        name: 'Standard',
+        price: 'Free',
+        iconUrl: '/apps/ghost-desktop/icon.png',
+      },
+    ],
   },
   {
     id: 'global-mute',
