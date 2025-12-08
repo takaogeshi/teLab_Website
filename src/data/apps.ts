@@ -1,4 +1,4 @@
-export type AppPlatform = 'macos';
+export type AppPlatform = 'macos' | 'ios';
 
 export type AppVersion = {
   name: string;

@@ -65,11 +65,11 @@ export function ContactContent({ apps, products }: ContactContentProps) {
 
   const handleChange =
     (field: keyof FormValues) =>
-    (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-      setFormValues((prev) => ({ ...prev, [field]: event.target.value }));
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
-      setStatus("idle");
-    };
+      (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+        setFormValues((prev) => ({ ...prev, [field]: event.target.value }));
+        setErrors((prev) => ({ ...prev, [field]: undefined }));
+        setStatus("idle");
+      };
 
   const validate = () => {
     const nextErrors: Partial<Record<keyof FormValues, string>> = {};
@@ -89,7 +89,7 @@ export function ContactContent({ apps, products }: ContactContentProps) {
     return nextErrors;
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const nextErrors = validate();
     setErrors(nextErrors);
@@ -98,9 +98,25 @@ export function ContactContent({ apps, products }: ContactContentProps) {
       return;
     }
 
-    console.log("Contact form (dummy)", formValues);
-    setStatus("success");
-    setFormValues(initialFormValues);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formValues),
+      });
+
+      if (!response.ok) {
+        throw new Error('Send failed');
+      }
+
+      setStatus("success");
+      setFormValues(initialFormValues);
+    } catch (error) {
+      console.error('Submit error:', error);
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
+    }
   };
 
   const macProductsByAppId = new Map(products.map((product) => [product.appId, product]));
@@ -193,7 +209,7 @@ export function ContactContent({ apps, products }: ContactContentProps) {
               <PaperAirplaneIcon className="h-4 w-4" /> 送信する
             </button>
             {status === "success" && (
-              <p className="text-sm text-slate-600">送信内容を受け付けました（ダミー）</p>
+              <p className="text-sm text-slate-600">送信内容を受け付けました。返信をお待ちください。</p>
             )}
           </div>
         </form>

@@ -2,7 +2,7 @@ export type ProductId = 'puzzle-mac' | 'clipslot-mac';
 
 export type ProductMeta = {
   id: ProductId;
-  appId: 'puzzle' | 'clipslot';
+  appId: 'puzzle' | 'clipslot' | 'ghost-desktop' | 'global-mute';
   name: string;
   description: string;
   price: number;
