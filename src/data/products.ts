@@ -15,11 +15,11 @@ export const products: ProductMeta[] = [
   {
     id: 'puzzle-mac',
     appId: 'puzzle',
-    name: 'Puzzle for macOS',
+    name: 'Puzzle Pro',
     description: 'ウィンドウ配置を素早く整える macOS 用ユーティリティ。',
-    price: 1200,
+    price: 500,
     currency: 'jpy',
-    stripePriceId: 'price_dummy_puzzle_mac',
+    stripePriceId: 'price_1Sc2qO1a8QcxM190xLhrBLuY',
     downloadKey: 'puzzle-mac-v1',
   },
   {
