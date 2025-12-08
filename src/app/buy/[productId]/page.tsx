@@ -6,9 +6,9 @@ import { apps } from "@/data/apps";
 import { PurchaseButton } from "@/components/PurchaseButton";
 
 type BuyPageProps = {
-  params: {
-    productId: ProductId;
-  };
+  params: Promise<{
+    productId: string;
+  }>;
 };
 
 const priceFormatter = new Intl.NumberFormat("ja-JP", {
@@ -20,8 +20,9 @@ export function generateStaticParams() {
   return products.map((product) => ({ productId: product.id }));
 }
 
-export function generateMetadata({ params }: BuyPageProps): Metadata {
-  const product = products.find((item) => item.id === params.productId);
+export async function generateMetadata({ params }: BuyPageProps): Promise<Metadata> {
+  const { productId } = await params;
+  const product = products.find((item) => item.id === (productId as ProductId));
 
   if (!product) {
     return {
@@ -35,8 +36,9 @@ export function generateMetadata({ params }: BuyPageProps): Metadata {
   };
 }
 
-export default function BuyPage({ params }: BuyPageProps) {
-  const product = products.find((item) => item.id === params.productId);
+export default async function BuyPage({ params }: BuyPageProps) {
+  const { productId } = await params;
+  const product = products.find((item) => item.id === (productId as ProductId));
 
   if (!product) {
     notFound();
