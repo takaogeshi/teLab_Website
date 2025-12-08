@@ -17,7 +17,7 @@ export function Header() {
   const navLinks = [
     { href: "/", label: t.common.home },
     { href: "/apps", label: t.common.apps },
-    { href: "/blog", label: t.common.blog },
+    { href: "https://note.com/telab", label: t.common.blog },
     { href: "/support", label: t.common.support },
     { href: "/contact", label: t.common.contact },
   ];

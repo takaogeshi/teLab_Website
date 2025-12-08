@@ -17,6 +17,8 @@ export type AppMeta = {
   platforms: AppPlatform[];
   versions?: AppVersion[];
   macBuyProductId?: string;
+  status: 'released' | 'coming_soon';
+  youtubeVideoId?: string;
 };
 
 export const apps: AppMeta[] = [
@@ -28,6 +30,7 @@ export const apps: AppMeta[] = [
     shortDescription_en: 'Quickly arrange windows like a puzzle.',
     tagline_en: 'Instantly snap open windows to the "perfect layout".',
     platforms: ['macos'],
+    status: 'coming_soon',
     versions: [
       {
         name: 'Lite',
@@ -50,6 +53,7 @@ export const apps: AppMeta[] = [
     shortDescription_en: 'Fixed-slot clipboard manager.',
     tagline_en: 'Instantly recall frequently used clips.',
     platforms: ['macos'],
+    status: 'coming_soon',
     versions: [
       {
         name: 'Standard',
@@ -67,6 +71,7 @@ export const apps: AppMeta[] = [
     shortDescription_en: 'Hide desktop files and disks instantly from the menu bar.',
     tagline_en: 'Clear your desktop in seconds before sharing your screen.',
     platforms: ['macos'],
+    status: 'coming_soon',
     versions: [
       {
         name: 'Standard',
@@ -83,5 +88,6 @@ export const apps: AppMeta[] = [
     shortDescription_en: 'Toggle mic/camera system-wide, regardless of meeting app.',
     tagline_en: 'Never hunt for the mute button again.',
     platforms: ['macos'],
+    status: 'coming_soon',
   },
 ];

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { CheckCircleIcon, CommandLineIcon, QuestionMarkCircleIcon, PhotoIcon } from "@heroicons/react/24/outline";
+import { CheckCircleIcon, CommandLineIcon, QuestionMarkCircleIcon, PhotoIcon, PlayCircleIcon } from "@heroicons/react/24/outline";
 import { type AppMeta } from "@/data/apps";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -97,7 +97,14 @@ export function AppDetailContent({ app }: { app: AppMeta }) {
                         <p className="text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground">
                             {t.appDetail.label}
                         </p>
-                        <h1 className="text-display text-6xl md:text-8xl gradient-text">{app.name}</h1>
+                        <div className="flex items-center gap-4">
+                            <h1 className="text-display text-6xl md:text-8xl gradient-text">{app.name}</h1>
+                            {app.status === 'coming_soon' && (
+                                <span className="mt-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-bold border border-primary/20">
+                                    {t.appDetail.comingSoon}
+                                </span>
+                            )}
+                        </div>
                     </div>
                     <p className="text-2xl font-medium text-foreground">
                         {language === "en" ? app.tagline_en : app.tagline}
@@ -170,6 +177,39 @@ export function AppDetailContent({ app }: { app: AppMeta }) {
                         ))}
                     </div>
                 </section>
+
+                {/* Video */}
+                {app.youtubeVideoId ? (
+                    <section className="space-y-12">
+                        <div className="border-b border-border pb-6">
+                            <h2 className="text-4xl font-bold tracking-tighter gradient-text">{t.appDetail.video}</h2>
+                            <p className="text-muted-foreground mt-2">{t.appDetail.videoDesc}</p>
+                        </div>
+                        <div className="aspect-video w-full overflow-hidden rounded-xl border border-border bg-black">
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src={`https://www.youtube.com/embed/${app.youtubeVideoId}`}
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                    </section>
+                ) : (
+                    // Placeholder for when no video ID is set but space is reserved
+                    <section className="space-y-12">
+                        <div className="border-b border-border pb-6">
+                            <h2 className="text-4xl font-bold tracking-tighter gradient-text">{t.appDetail.video}</h2>
+                            <p className="text-muted-foreground mt-2">{t.appDetail.videoDesc}</p>
+                        </div>
+                        <div className="aspect-video w-full rounded-xl border border-border bg-muted/30 flex flex-col items-center justify-center gap-4 text-muted-foreground">
+                            <PlayCircleIcon className="h-16 w-16 opacity-50" />
+                            <p className="font-medium text-lg">Video coming soon</p>
+                        </div>
+                    </section>
+                )}
 
                 {/* Screenshots */}
                 <section className="space-y-12">

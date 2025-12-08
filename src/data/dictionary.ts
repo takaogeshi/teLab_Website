@@ -48,6 +48,9 @@ export const dictionary = {
             screenshotsDesc: "UI プレビュー（開発中）",
             faq: "FAQ",
             faqDesc: "導入前によくいただく質問をまとめました。",
+            comingSoon: "Coming Soon",
+            video: "Video",
+            videoDesc: "使い方のイメージ動画です。",
         },
     },
     en: {
@@ -97,6 +100,9 @@ export const dictionary = {
             screenshotsDesc: "UI Preview (In Development)",
             faq: "FAQ",
             faqDesc: "Common questions.",
+            comingSoon: "Coming Soon",
+            video: "Video",
+            videoDesc: "Watch how it works.",
         },
     },
 };

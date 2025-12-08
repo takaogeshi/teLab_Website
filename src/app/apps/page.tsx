@@ -30,9 +30,16 @@ export default function AppsPage() {
             <div key={app.id} className="group relative flex flex-col justify-between border border-border p-8 transition-colors hover:border-foreground min-h-[300px]">
               <div className="space-y-4">
                 <div className="flex justify-between items-start">
-                  <h2 className="text-4xl font-bold tracking-tighter gradient-text group-hover:underline decoration-2 underline-offset-4">
-                    {app.name}
-                  </h2>
+                  <div className="flex items-center gap-3">
+                    <h2 className="text-4xl font-bold tracking-tighter gradient-text group-hover:underline decoration-2 underline-offset-4">
+                      {app.name}
+                    </h2>
+                    {app.status === 'coming_soon' && (
+                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold border border-primary/20">
+                        {t.appDetail.comingSoon}
+                      </span>
+                    )}
+                  </div>
                   {app.versions ? (
                     <Image
                       src={app.versions.find((v) => v.name === "Pro")?.iconUrl || app.versions[0].iconUrl}
@@ -69,7 +76,7 @@ export default function AppsPage() {
             </div>
           ))}
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 }

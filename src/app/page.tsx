@@ -21,7 +21,7 @@ export default function Home() {
     {
       title: t.common.blog,
       description: t.home.latestInfo.blogDesc,
-      href: "/blog",
+      href: "https://note.com/telab",
       icon: NewspaperIcon,
     },
     {
